@@ -224,7 +224,9 @@ class FullTokenizer(object):
 
   def tokenize(self, text):
     if self.sp_model:
+      print(f'text before: {text}')
       split_tokens = encode_pieces(self.sp_model, text, return_unicode=False)
+      print(f'split_tokens: {split_tokens}')
     else:
       split_tokens = []
       for token in self.basic_tokenizer.tokenize(text):
