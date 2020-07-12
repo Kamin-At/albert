@@ -223,19 +223,19 @@ class FullTokenizer(object):
         spm_model_file=spm_model_file)
 
   def tokenize(self, text):
-    print(text)
+    # print(text)
     if self.sp_model:
-      print('case1')
-      print(f'text before: {text}')
+      # print('case1')
+      # print(f'text before: {text}')
       split_tokens = encode_pieces(self.sp_model, text, return_unicode=False)
-      print(f'split_tokens: {split_tokens}')
+      # print(f'split_tokens: {split_tokens}')
     else:
-      print('case2')
+      # print('case2')
       split_tokens = []
       for token in self.basic_tokenizer.tokenize(text):
         for sub_token in self.wordpiece_tokenizer.tokenize(token):
           split_tokens.append(sub_token)
-    print(split_tokens)
+    # print(split_tokens)
     return split_tokens
 
   def convert_tokens_to_ids(self, tokens):
