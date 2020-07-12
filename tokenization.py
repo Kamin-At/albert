@@ -33,22 +33,23 @@ SPIECE_UNDERLINE = u"▁".encode("utf-8")
 
 def preprocess_text(inputs, remove_space=True, lower=False):
   """preprocess data by removing extra space and normalize data."""
-  outputs = inputs
-  if remove_space:
-    outputs = " ".join(inputs.strip().split())
 
-  if six.PY2 and isinstance(outputs, str):
-    try:
-      outputs = six.ensure_text(outputs, "utf-8")
-    except UnicodeDecodeError:
-      outputs = six.ensure_text(outputs, "latin-1")
+  # outputs = inputs
+  # if remove_space:
+  #   outputs = " ".join(inputs.strip().split())
 
-  outputs = unicodedata.normalize("NFKD", outputs)
-  outputs = "".join([c for c in outputs if not unicodedata.combining(c)])
-  if lower:
-    outputs = outputs.lower()
+  # if six.PY2 and isinstance(outputs, str):
+  #   try:
+  #     outputs = six.ensure_text(outputs, "utf-8")
+  #   except UnicodeDecodeError:
+  #     outputs = six.ensure_text(outputs, "latin-1")
 
-  return outputs
+  # outputs = unicodedata.normalize("NFKD", outputs)
+  # outputs = "".join([c for c in outputs if not unicodedata.combining(c)])
+  # if lower:
+  #   outputs = outputs.lower()
+
+  return inputs
 
 
 def encode_pieces(sp_model, text, return_unicode=True, sample=False):
